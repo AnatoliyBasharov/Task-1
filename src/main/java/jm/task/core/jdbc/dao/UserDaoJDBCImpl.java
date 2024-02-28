@@ -16,8 +16,8 @@ public class UserDaoJDBCImpl implements UserDao {
         String sql = """
                 CREATE TABLE IF NOT EXISTS users (
                 id SERIAL PRIMARY KEY ,
-                name CHARACTER(128) NOT NULL ,
-                last_name CHARACTER(128) NOT NULL ,
+                name VARCHAR(128) NOT NULL ,
+                last_name VARCHAR(128) NOT NULL ,
                 age INT
                 );
                 """;

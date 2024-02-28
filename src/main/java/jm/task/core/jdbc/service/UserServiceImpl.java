@@ -12,8 +12,8 @@ public class UserServiceImpl implements UserService {
         String sql = """
                 CREATE TABLE IF NOT EXISTS users (
                 id SERIAL PRIMARY KEY ,
-                name CHARACTER(128) NOT NULL ,
-                last_name CHARACTER(128) NOT NULL ,
+                name VARCHAR(128) NOT NULL ,
+                last_name VARCHAR(128) NOT NULL ,
                 age INT
                 );
                 """;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
             System.out.println("таблица создана");
             statement.execute(sql);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в создании таблицы");
         }
 
 
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             System.out.println("таблица удалена");
             statement.execute(sql);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в удалении таблицы");
         }
     }
 
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
             statement.executeUpdate();
             System.out.println("User " + name + " добавлен в таблицу");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в добавлении User");
         }
     }
 
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
                 System.out.println("такого id " + id + " не существует");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в удалении User по id");
         }
     }
 
@@ -98,10 +98,10 @@ public class UserServiceImpl implements UserService {
             for (User x : list) {
                 System.out.println(x);
             }
-            return list;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в добавлении всех User");
         }
+        return list;
     }
 
     public void cleanUsersTable() {
@@ -114,7 +114,7 @@ public class UserServiceImpl implements UserService {
             statement.executeUpdate();
             System.out.println("Все пользователи User были удалены из таблицы");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в удалении всех User");
         }
     }
 }
